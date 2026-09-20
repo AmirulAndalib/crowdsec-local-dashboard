@@ -1,6 +1,6 @@
 # CrowdSec Dashboard
 > [!IMPORTANT]
-> This project is in beta. Im planning on overhauling the entire frontend & table experience after the summer, when i'll have significantly more time available. The project is still active :-)
+> This project is in beta. Expect breaking changes and incomplete features.
 
 A self-hosted local web dashboard for viewing and managing decisions made by your [CrowdSec](https://crowdsec.net) instance. Built for homelab use - no enterprise account or cloud connectivity required.
 
@@ -64,7 +64,7 @@ This dashboard replaces all of that with a filterable table and a delete button.
 - **SSO login** - optional OIDC/OAuth integration; works with Authentik, Keycloak, Okta, and any other standards-compliant provider
 - **Mobile-friendly** - responsive tables that collapse gracefully on small screens
 - **Dark mode** - follows system preference
-- **Installable** - ships a web app manifest so it can be added to the home screen on desktop and mobile
+- **PWA installable** - installs as a Progressive Web App on supported devices.
 
 ---
 
@@ -109,8 +109,7 @@ Open [http://localhost:3000](http://localhost:3000). On first launch you will be
 
 ### Updating
 
-The compose file pins the release it was downloaded with. To move to a newer
-release, download it again and pull:
+The compose file pins the release it was downloaded with. To move to a newer release, download it again and pull:
 
 ```sh
 curl -o docker-compose.yml https://raw.githubusercontent.com/ollioddi/crowdsec-local-dashboard/main/docker-compose.yml
@@ -122,9 +121,13 @@ Check the [release notes](https://github.com/ollioddi/crowdsec-local-dashboard/r
 
 The SQLite database is stored in a Docker volume (`db`) and survives updates.
 
+>[!NOTE] While in beta, I recommend using tagged releases rather than the main branch to avoid unexpected breaking changes. The app will notify when a new release is available (if you didn't disable the Github check).
+
 ---
 
 ## Configuration
+
+Refer to the sample `.env.example` file for guidance on setting these environment variables. The table below is for reference only.
 
 | Variable | Required | Default | Description |
 |---|---|---|---|
